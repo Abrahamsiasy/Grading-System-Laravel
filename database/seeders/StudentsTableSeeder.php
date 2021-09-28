@@ -23,7 +23,7 @@ class StudentsTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'full_name' => 'STU1',
-                'sex' => 1,
+                'sex' => true,
                 'email' => 'stu@dent.one',
                 'address' => 'addis',
                 'created_at' => NULL,
@@ -33,7 +33,7 @@ class StudentsTableSeeder extends Seeder
             array (
                 'id' => 2,
                 'full_name' => 'STU2',
-                'sex' => 2,
+                'sex' => false,
                 'email' => 'stu@dent.two',
                 'address' => 'addis',
                 'created_at' => NULL,
