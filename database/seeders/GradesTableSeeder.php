@@ -24,8 +24,26 @@ class GradesTableSeeder extends Seeder
                 'id' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
-                'mark' => 80.0,
-                'grade' => 'A',
+                'mark' => 98.0,
+                'grade' => 'A+',
+                'status' => 1,
+            ),
+            1 => 
+            array (
+                'id' => 2,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+                'mark' => 33.0,
+                'grade' => 'F',
+                'status' => 2,
+            ),
+            2 => 
+            array (
+                'id' => 3,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+                'mark' => 33.0,
+                'grade' => 'F',
                 'status' => 1,
             ),
         ));

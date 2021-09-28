@@ -22,20 +22,20 @@ class StudentsTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'full_name' => 's1',
+                'full_name' => 'STU1',
                 'sex' => 1,
-                'email' => 'stihs@gmail.com',
-                'address' => 'asc',
+                'email' => 'stu@dent.one',
+                'address' => 'addis',
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
             1 => 
             array (
                 'id' => 2,
-                'full_name' => 'Student 2',
-                'sex' => 1,
-                'email' => 'Studen@gmail.com',
-                'address' => 'Student 2',
+                'full_name' => 'STU2',
+                'sex' => 2,
+                'email' => 'stu@dent.two',
+                'address' => 'addis',
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
