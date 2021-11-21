@@ -24,11 +24,14 @@
                             
                             @foreach ($studentlist as $studentlists)
                                 <tr>
-                                    <td>{{$studentlists->full_name}}</td>
+                                    <td> <a href="/student/{{$studentlists->id}}"> {{$studentlists->full_name}}</a></td>
                                     <td>{{$studentlists->email}}</td>
                                     <td>{{$studentlists->address}}</td>
-                                    <td>{{$studentlists->sex}}</td>
-                                
+                                    @if($studentlists->sex == 1)
+                                    <td>M</td>
+                                    @else
+                                    <td>F</td>
+                                    @endif
                                     </td>
                                 </tr>
                             @endforeach

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCorsecodeToCourses extends Migration
+class CreateNewAcadTermsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class AddCorsecodeToCourses extends Migration
      */
     public function up()
     {
-        Schema::table('courses', function (Blueprint $table) {
-            //
-            $table->string('corsecode');
-
+        Schema::create('new_acad_terms', function (Blueprint $table) {
+            $table->string('acad_term_id', 8)->primary();
+            $table->string('year', 9);
+            $table->tinyInteger('semester');
+            $table->timestamps();
         });
     }
 
@@ -27,10 +28,6 @@ class AddCorsecodeToCourses extends Migration
      */
     public function down()
     {
-        Schema::table('courses', function (Blueprint $table) {
-            //
-            $table->dropColumn('corsecode');
-
-        });
+        Schema::dropIfExists('new_acad_terms');
     }
 }

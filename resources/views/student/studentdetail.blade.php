@@ -2,14 +2,15 @@
 
 @section('content')
 <div>
-    <h1>Grade Report</h1>
+    <h1>Grade Report </h1>
     <h3>student name and Department</h3>
     <!-- post card -->
     <div class="row">
+    @foreach ($smester as $smesters)
         <div class="col-md-6 mt-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title"> Academic Year : 2020/21, Year I, Semester : One</h5>
+                    <h5 class="card-title"> Academic Year : {{$smesters->year}}, Year I, Semester : {{$smesters->semester}}</h5>
                     <table class="table table-striped card-text">
                         <tr>
                             <th>No.</th>
@@ -46,10 +47,13 @@
 
                     </p>
                     <p>Semistor total CH {{$ch}}</p>
+                    @if ($ects !=0)
                     <h4>CGPA {{round($calcualtedGPA / $ects, 2)}}</h4>
+                    @endif
+                    <p>cgpa {{$calcualtedGPA}}</p>
                     <p>GPA</p>
                     <div class="h6 card-subtitle text-right text-muted">
-                        semister I
+                        semister {{$loop->iteration}}
                     </div>
                 </div>
 
@@ -57,20 +61,7 @@
         </div>
 
 
-        <div class="col-md-6 mt-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Course Name</h5>
-                    <p class="card-text">
-                        grade lists
-                    </p>
-                    <div class="h6 card-subtitle text-right text-muted">
-                        semister II
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        @endforeach
 
 
 </div>

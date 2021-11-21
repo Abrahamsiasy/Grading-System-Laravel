@@ -16,9 +16,9 @@
                     @if (count($gradelist))
                         <table class="table table-striped ">
                             <tr>
-                                <th>Student Name</th>
+                                <!-- <th>Student Name</th>
                                 <th>Course Name</th>
-                                <th>Instractor Name</th>
+                                <th>Instractor Name</th> -->
                                 <th>Mark</th>
                                 <th>Grade</th>
                                 <th>Status</th>
@@ -26,9 +26,6 @@
                             
                             @foreach ($gradelist as $gradelists)
                                 <tr>
-                                    <td>{{$gradelists->student ->full_name}}</td>
-                                    <td>{{$gradelists->course->course_name}}</td>
-                                    <td>{{$gradelists->instractor->full_name }}</td>
                                     <td>{{$gradelists->mark}}</td>
                                     <td>{{$gradelists->	grade}}</td>
                                     @if ($gradelists->	status == 1)

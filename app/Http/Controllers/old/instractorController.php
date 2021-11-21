@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\old;
 
 use Illuminate\Http\Request;
 use App\Models\Instractor;
+use App\Http\Controllers\Controller;
 
 class instractorController extends Controller
 {

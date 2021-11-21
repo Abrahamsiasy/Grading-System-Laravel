@@ -1,22 +1,37 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Neww;
 
-use App\Models\Grade;
+use App\Http\Controllers\Controller;
+use App\Models\Neww\NewEmployee;
+use App\Models\Neww\NewClass;
+use DB;
+
 use Illuminate\Http\Request;
 
-class gradeController extends Controller
+class NewInstructorController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    private function getInstructors()
+    {
+
+        $instructors = NewEmployee::join('users', 'users.id', '=', 'new_employees.user_id')
+            ->orderBy('users.name')
+            ->paginate(15);
+
+        return $instructors;
+    }
     public function index()
     {
         //
-        $gradelist = Grade::all();
-        return view('grade.index')->with('gradelist', $gradelist);
+        $instructors = $this->getInstructors();
+        return view('neww.instructor.index')
+            ->with('instructors', $instructors);
     }
 
     /**
@@ -46,9 +61,24 @@ class gradeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($employee_no)
     {
         //
+        $instructor = NewEmployee::find($employee_no);
+        $instructor=$instructor->employee_no;
+
+        //$classes = DB::table('new_classes')->where('instructor_id', $instructor)->get();
+
+        $classes = NewClass::where('instructor_id', 'LIKE', $instructor)
+            ->orderBy('course_code')
+            ->paginate(10);
+
+
+        return view('neww.instructor.classes')
+            ->with('classes', $classes)
+            ->with('instructor', $instructor);
+
+        return $classes;
     }
 
     /**

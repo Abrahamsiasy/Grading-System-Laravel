@@ -18,6 +18,7 @@ class CreateSemestersTable extends Migration
             $table->integer('year');
             $table->smallInteger('semester');
             
+            
 
 
         });

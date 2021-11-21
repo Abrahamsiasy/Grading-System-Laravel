@@ -17,4 +17,7 @@ class Student extends Model
     public function course(){
         return $this->hasMany('App\Models\Course');
     }
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
 }

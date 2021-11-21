@@ -1,8 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\old;
 
 use Illuminate\Http\Request;
+use App\Models\Student;
+use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Facades\Auth;
+
+
 
 class HomeController extends Controller
 {
@@ -23,6 +29,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //$student = Student::find($id)->course()->get();
+        $students = Auth::user()->students;
+        return view('home')->with('students', $students);
     }
 }

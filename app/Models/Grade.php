@@ -18,4 +18,6 @@ class Grade extends Model
         return $this->hasMany('App\Models\Course');
     }
 
+    
+
 }

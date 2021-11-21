@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\old;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 class courseController extends Controller
 {
