@@ -52,11 +52,11 @@
                                     @foreach ($curriculums as $curriculum)
                                     @if($curriculum->curriculum_id == $cur_curriculum_id)
                                     <option value="{{ $curriculum->curriculum_id }}" selected>
-                                        {{ $curriculum->curriculum_id }}
+                                        {{ $curriculum->curriculum_id }} - {{ $curriculum->department_name }}
                                     </option>
                                     @else
                                     <option value="{{ $curriculum->curriculum_id }}">
-                                        {{ $curriculum->curriculum_id }}
+                                        {{ $curriculum->curriculum_id }} - {{ $curriculum->department_name }}
                                     </option>
                                     @endif
                                     @endforeach

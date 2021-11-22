@@ -7,7 +7,7 @@
       <div class="row mt-5">
         <div class="col-xl-12 mb-5 mb-xl-0">
             <div class="card shadow">
-
+                
             @if(count($instructors) > 0)
                 <div class="card-header border-0">
                     <div class="row align-items-center">

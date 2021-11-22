@@ -30,6 +30,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                        @role('admin|registrar')
                             @foreach ($students as $student)
                             <tr>
                             
@@ -46,6 +47,7 @@
                                 <td> {{$student->user->getName()}} </td>
                             </tr>
                             @endforeach
+                        @endrole
                         </tbody>
                     </table>
                 </div>

@@ -75,7 +75,13 @@ Route::group(['middleware' => ['auth','role:admin|student']], function () {
 
 Route::get('newcourse/list', [StudentController::class, 'getStudents'])->name('newcourse.list');
 
-Route::resource('newinstructor', App\Http\Controllers\Neww\NewInstructorController::class);
+
+Route::group(['middleware' => ['auth','role:admin|instartor']], function () {
+    //
+    Route::resource('newinstructor', App\Http\Controllers\Neww\NewInstructorController::class);
+
+    
+});
 
 
 

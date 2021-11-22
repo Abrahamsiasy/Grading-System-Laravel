@@ -16,6 +16,8 @@ use App\Models\Neww\NewGrade;
 use App\Models\Neww\NewAcadTerm;
 use App\Models\Neww\NewCurriculum;
 use App\Models\Neww\NewCurriculumDetails;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class NewStudentController extends Controller
@@ -34,6 +36,12 @@ class NewStudentController extends Controller
             ->paginate(15);
 
         return $students;
+        
+    }
+
+    private function getUser(){
+        $studentss = Auth::user()->students;
+        return $studentss;
     }
 
     public function studentCourseGrade()
@@ -43,6 +51,7 @@ class NewStudentController extends Controller
     public function index()
     {
         //
+
         $students = $this->getStudents();
         return view('neww.students.index')->with('students', $students);
     }
