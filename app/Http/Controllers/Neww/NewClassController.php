@@ -131,6 +131,19 @@ class NewClassController extends Controller
 
     public function enrollStudent($id)
     {
+        // $this->validate($request, [
+        //     'student_no' => 'required',
+        //     'class_id' => 'required',
+        // ]);
+
+        // Add Grade
+        // $grade = new NewGrade;
+        // $grade->class_id = $request->input('class_id');
+        // $grade->student_no = $request->input('student_no');
+        // $grade->curriculum_details_id = $request->input('curriculum_details_id');
+        // $grade->save();
+
+
         $class = NewClass::find($id);
         $grades = $class->grades;
 

@@ -9,18 +9,15 @@
 
                 <div class="card-header border-0">
                     <div class="row align-items-center">
-                        <div class="col col-lg-3">
-                            <h3 class="mb-0">Student List</h3>
-                        </div>
-                        <div class="col text-right">
-                            <a href="/newstudent/create" class="btn btn-sm btn-primary">Add Student</a>
+                        <div class="col col-lg-10">
+                            <h3 class="mb-0">Student Name - {{Auth::user()->student->getStudentNo()}}</h3>
                         </div>
                     </div>
                 </div>
 
                 @if(count($students) > 0)
                 <div class="table-responsive">
-                    <table class="table align-items-center table-flush   count($students) < 5 ? 'mb-6' : '' ">
+                    <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col"></th>
@@ -30,7 +27,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @role('admin|registrar')
+                        @role('student')
                             @foreach ($students as $student)
                             <tr>
                             

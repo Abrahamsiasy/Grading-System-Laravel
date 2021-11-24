@@ -123,7 +123,7 @@
                     </select>
                   </td>
                   <td>
-                    <a href="/students/{{ $student->user->id }}">
+                    <a href="/newstudents/{{ $student->user->id }}">
                       {{ $student->getStudentNo() }}
                     </a>
                   </td>

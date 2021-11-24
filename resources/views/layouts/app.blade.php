@@ -11,9 +11,6 @@
 
 <title>{{ config('app.name', 'Ju Grading') }}</title>
 
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}" defer></script>
-
 
 
 <!-- Fonts -->
@@ -24,11 +21,13 @@
 
 <!-- Styles -->
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('styles')
 
-
-
-
-@yield('css')
+<style>
+.custom-select{
+background: none !important;
+}
+</style>
 </head>
 
 <body>
@@ -123,7 +122,10 @@
             </div>
         </main>
     </div>
-    @stack('script')
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    @yield('javascripts')
 </body>
 
 </html>

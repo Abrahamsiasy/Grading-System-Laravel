@@ -35,6 +35,9 @@ class NewStudentController extends Controller
             ->orderBy('users.name')
             ->paginate(15);
 
+            
+
+
         return $students;
         
     }
@@ -51,9 +54,30 @@ class NewStudentController extends Controller
     public function index()
     {
         //
+        
+        // $students = $this->getStudents();
+        // return view('neww.students.index')->with('students', $students);
 
-        $students = $this->getStudents();
-        return view('neww.students.index')->with('students', $students);
+
+        //
+        $user_id = Auth::user()->id;
+        $students = NewStudent::where('user_id', $user_id)->get();
+        
+
+        $studentrole = User::whereHas("roles", function($q){ $q->where('name', 'student'); })->get();
+        $users_with_student_role_id_list = array();
+        foreach ($studentrole as $strole){
+            $users_with_student_role_id_list[] = $strole->id;
+        }
+
+        if(in_array($user_id, $users_with_student_role_id_list)){
+            NewStudent::where('user_id', $user_id)->get();
+            return view('neww.students.stu')->with('students', $students);
+        }
+        else {
+            $students = $this->getStudents();
+            return view('neww.students.index')->with('students', $students);
+        }
     }
 
     /**
@@ -171,6 +195,7 @@ class NewStudentController extends Controller
     public function edit($id)
     {
         //
+        return view('neww.students.tobedeleted');
     }
 
     /**

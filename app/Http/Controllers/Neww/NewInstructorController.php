@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Neww;
 use App\Http\Controllers\Controller;
 use App\Models\Neww\NewEmployee;
 use App\Models\Neww\NewClass;
-use DB;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 use Illuminate\Http\Request;
 
@@ -26,14 +28,42 @@ class NewInstructorController extends Controller
 
         return $instructors;
     }
+    // public function index()
+    // {
+    //     //
+    //     $instructors = $this->getInstructors();
+    //     return view('neww.instructor.index')
+    //         ->with('instructors', $instructors);
+    // }
+
     public function index()
     {
         //
-        $instructors = $this->getInstructors();
-        return view('neww.instructor.index')
-            ->with('instructors', $instructors);
-    }
+        
+        // $instructors = $this->getInstructors();
+        // return view('neww.instructors.index')->with('instructors', $instructors);
 
+
+        //
+        $user_id = Auth::user()->id;
+        $instructors = NewEmployee::where('user_id', $user_id)->get();
+        
+
+        $instdentrole = User::whereHas("roles", function($q){ $q->where('name', 'instartor'); })->get();
+        $users_with_instructor_role_id_list = array();
+        foreach ($instdentrole as $strole){
+            $users_with_instructor_role_id_list[] = $strole->id;
+        }
+
+        if(in_array($user_id, $users_with_instructor_role_id_list)){
+            NewEmployee::where('user_id', $user_id)->get();
+            return view('neww.instructor.inst')->with('instructors', $instructors);
+        }
+        else {
+            $instructors = $this->getInstructors();
+            return view('neww.instructor.index')->with('instructors', $instructors);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *

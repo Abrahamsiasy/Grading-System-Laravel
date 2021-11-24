@@ -45,28 +45,28 @@ class NewGradeController extends Controller
             ->with('selected_acad_term', $selected_acad_term);
     }
 
-    public function enrollStudent($id)
-    {
-        $class = NewClass::find($id);
-        $grades = $class->grades;
+    // public function enrollStudent($id)
+    // {
+    //     $class = NewClass::find($id);
+    //     $grades = $class->grades;
 
-        // Get students except those who are already enrolled
-        $except_grades = [];
+    //     // Get students except those who are already enrolled
+    //     $except_grades = [];
 
-        foreach ($grades as $grade) {
-            array_push($except_grades, $grade->student->student_no);
-        }
+    //     foreach ($grades as $grade) {
+    //         array_push($except_grades, $grade->student->student_no);
+    //     }
 
-        $students = NewStudent::join('users', 'users.id', '=', 'student.user_id')
-            ->whereNotIn('student_no', $except_grades)
-            ->orderBy('users.name')
-            ->paginate(10);
+    //     $students = NewStudent::join('users', 'users.id', '=', 'student.user_id')
+    //         ->whereNotIn('student_no', $except_grades)
+    //         ->orderBy('users.name')
+    //         ->paginate(10);
 
-        return view('neww.grades.create')
-            ->with('grades', $grades)
-            ->with('class', $class)
-            ->with('students', $students);
-    }
+    //     return view('neww.grades.create')
+    //         ->with('grades', $grades)
+    //         ->with('class', $class)
+    //         ->with('students', $students);
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -84,10 +84,19 @@ class NewGradeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        //
+        
     }
+
 
     /**
      * Display the specified resource.

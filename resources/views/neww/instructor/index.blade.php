@@ -24,7 +24,7 @@
 
                 @if(count($instructors) > 0)
                     <div class="table-responsive">
-                        <table class="table align-items-center table-flush {{ count($instructors) < 5 ? 'mb-6' : ''}}">
+                        <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col"></th>

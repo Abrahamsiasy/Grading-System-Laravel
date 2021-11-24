@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
-@section('css')
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+@section('styles')
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"> -->
+<!-- //cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.bootstrap5.min.css">
+
+
 @endsection
 
 @section('content')
@@ -62,7 +68,7 @@
   <div id="myDIV" style="display: none;">
 
     <div class="table-responsive display" id="example">
-      <table class="table align-items-center table-flush">
+      <table class="table align-items-center table-flush" id="datatable1">
         <thead class="thead-light">
           <tr>
             <th scope="col" class="text-center">Course Code</th>
@@ -157,7 +163,7 @@
           <h3 class="mb-0"> {{ $cur_details[0]->getAcadTerm() }} </h3>
         </div>
         <div class="table-responsive">
-          <table class="table align-items-center table-flush" id="empTable">
+          <table class="table align-items-center table-flush" id="datatable2">
             <thead class="thead-light">
               <tr>
                 <th scope="col" class="text-center">Course Code</th>
@@ -271,6 +277,11 @@
 
 
                 @else
+
+                <td class="text-center" scope="row">--</td>
+                <td class="text-center" scope="row">--</td>
+                <td class="text-center" scope="row">--</td>
+                <td class="text-center" scope="row">--</td>
                 @endif
                 @endforeach
 
@@ -315,17 +326,37 @@
 
 @endsection
 
-@push('script')
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+@section('javascripts')
 
 
-<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+@section('javascripts')
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
 
 <script>
   $(document).ready(function() {
-    $('#empTable').DataTable();
+    $('#datatable1').DataTable({
+      "dom": 'Bfrtip',
+      "processing": true, // for show progress bar
+      buttons: [
+        'copy', 'csv', 'excel', 'print'
+      ]
+    });
+
+    table.buttons().container()
+      .appendTo('#datatable1_wrapper .col-md-6:eq(0)');
   });
+
+  
+
+  
 </script>
-@endpush
+
+@endsection

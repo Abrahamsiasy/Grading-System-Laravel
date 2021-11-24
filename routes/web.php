@@ -34,9 +34,17 @@ Route::get('/home', [App\Http\Controllers\old\HomeController::class, 'index'])->
 //new once
 Route::resource('newcourse', App\Http\Controllers\Neww\NewCourseController::class);
 Route::resource('newgrade', App\Http\Controllers\Neww\NewGradeController::class);
+//Route::get('newclass/enroll_students/{class}','App\Http\Controllers\Neww\NewClassController@enrollStudent');
+//Route::get('newclass/enroll_students/{class}','App\Http\Controllers\Neww\NewGradeController@enrollStudent');
+Route::resource('newclass/enroll_students', App\Http\Controllers\Neww\NewEnrollStudentsController::class);
+Route::get('newclass/enroll_students/{class}','App\Http\Controllers\Neww\NewGradeController@enrollStudent');
+
+//Route::get('newclass/enroll_students/{class}', 'App\Http\Controllers\Neww\NewEnrollStudentsController@enrollStudent');
+//Route::get('newclass/enroll_students/{class}','App\Http\Controllers\Neww\NewEnrollStudentsController@show');
+
+
 Route::resource('newclass', App\Http\Controllers\Neww\NewClassController::class);
 
-Route::get('newclass/enroll_students/{class}','App\Http\Controllers\Neww\NewClassController@enrollStudent');
 
 Route::resource('newacad_term', App\Http\Controllers\Neww\NewAcadTermController::class);
 Route::resource('newcurriculum', App\Http\Controllers\Neww\NewCurriculumsController::class);
@@ -51,6 +59,8 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
 		'index'
 	]);
 });
+
+// Route::resource('newstu', App\Http\Controllers\Neww\NewStuController::class);
 
 
 
@@ -73,7 +83,7 @@ Route::group(['middleware' => ['auth','role:admin|student']], function () {
 
 
 
-Route::get('newcourse/list', [StudentController::class, 'getStudents'])->name('newcourse.list');
+// Route::get('newcourse/list', [NewStudentController::class, 'getStudents'])->name('newcourse.list');
 
 
 Route::group(['middleware' => ['auth','role:admin|instartor']], function () {
@@ -82,6 +92,7 @@ Route::group(['middleware' => ['auth','role:admin|instartor']], function () {
 
     
 });
+
 
 
 

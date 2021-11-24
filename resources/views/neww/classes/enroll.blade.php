@@ -28,7 +28,7 @@
                 Department:
               </dt>
               <dd class="col-sm-7">
-              {{$class->curriculum->department_name }}
+                {{$class->curriculum->department_name }}
               </dd>
 
 
@@ -111,7 +111,7 @@
             </thead>
             <tbody>
               @foreach ($students as $student)
-              <form id="form-post" method="POST" action="">
+              <form id="form" method="post" action="/newclass/enroll_students">
                 @csrf
                 <tr>
                   <td class="text-center" scope="row">
@@ -120,17 +120,13 @@
                   </td>
                   <td>
 
-                    <select name="curriculum_details_id" class="select2 form-control m-b" required>
+                    <select name="curriculum_details_id" class="custom-select" required>
                       @foreach ($student->curriculum->curriculumDetails as $curriculum_details)
                       <!-- Set course in curriculum to selected if the same with course in class -->
                       @if($class->course_code == $curriculum_details->course_code)
                       <option value="{{ $curriculum_details->curriculum_details_id }}" selected>
                         {{ $curriculum_details->course->getCourse() }}
                       </option>
-                      <!-- @else -->
-                      <!-- <option value="{{ $curriculum_details->curriculum_details_id }}"> -->
-                      <!-- {{ $curriculum_details->course->getCourse() }} -->
-                      <!-- </option> --> -->
                       @endif
                       @endforeach
                     </select>
@@ -144,9 +140,9 @@
                   <td class="text-center">{{ $student->curriculum_id }}</td>
 
                   <td class="text-center" scope="row">
-                    <p class="btn btn-outline-primary btn-sm">
-                      enroll
-                    </p>
+                    <button type="submit" class="btn btn-outline-primary btn-sm">
+                      Enroll
+                    </button>
                   </td>
                 </tr>
 
